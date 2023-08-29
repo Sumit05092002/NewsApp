@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Newsitem extends Component {
   render() {
-    let{description,imageUrl}=this.props;
+    let{description,imageUrl,newsUrl,title,ReadMore}=this.props;
     return (
       <div>
         <div className="content">
@@ -11,6 +11,9 @@ export default class Newsitem extends Component {
             </div>
             <div className="news">
                 <p>{description}</p>
+            </div>
+            <div className="button">
+              <a href={ReadMore}><button>Read More</button></a>
             </div>
         </div>
       </div>

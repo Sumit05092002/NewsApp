@@ -37,7 +37,7 @@
   }
 }
 nav ul{
-  display:flex;
+   display:flex; 
   width:1450px;
   height:50px;
   list-style-type: none;
@@ -49,9 +49,8 @@ nav ul{
   border-radius: 50px;
 }
 .content{
-  height:400px;
-  width:400px;
-  border:1px solid black;
+  height:auto;
+  width:auto;
   display:flex;
   flex-direction: column;
 }
@@ -60,14 +59,16 @@ nav ul{
   display:flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  height:1000px;
+  height:auto;
 }
 .parentcontainer{
   background-color: rgb(230, 229, 229);
   height:1200px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .image{
   height:200px;
@@ -75,7 +76,7 @@ nav ul{
   
 }
 .content{
-  height:400px;
+  height:550px;
   width:200px;
   display:flex;
   flex-direction: column;
@@ -85,4 +86,8 @@ nav ul{
   display:flex;
   flex-direction: column;
   align-items: center;
+}
+button{
+  background-color:rgb(188, 198, 188);
+  padding:5px;
 }
