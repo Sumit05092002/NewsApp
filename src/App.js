@@ -6,9 +6,11 @@ export default class App extends Component {
   render() {
     return (
       <div className='parent'>
-        <Navbar/>
+        <Navbar />
         <br />
         <News></News>
+        <br />
+        <br />
       </div>
     )
   }
