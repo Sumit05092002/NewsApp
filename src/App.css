@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -39,8 +40,8 @@
 }
 
 body {
-  background-color: #f6f6f6;
-  background-image: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
+  background-color: #98d9e1;
+  background-image: linear-gradient(315deg, #98d9e1 0%, #d6aed6 74%);
 }
 
 nav ul {
@@ -50,6 +51,7 @@ nav ul {
   list-style-type: none;
   justify-content: space-between;
   align-items: center;
+  color: black;
 }
 
 #SearchBox {
@@ -91,6 +93,7 @@ nav ul {
   width: 200px;
   display: flex;
   flex-direction: column;
+  transition: transform .2s;
 }
 
 .parent {
@@ -126,6 +129,58 @@ button {
   justify-content: space-between;
   width: 1500px;
 }
-button:hover{
-  cursor:pointer;
+
+button:hover {
+  cursor: pointer;
+  background-color: pink;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+.content:hover {
+  -ms-transform: scale(1.5);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+  /* Safari 3-8 */
+  transform: scale(1.5);
+}
+
+.news {
+  background-color: #98d9e1;
+  background-image: linear-gradient(315deg, #98d9e1 0%, #d6aed6 74%);
+}
+
+.button {
+  background-color: #98d9e1;
+  background-image: linear-gradient(315deg, #98d9e1 0%, #d6aed6 74%);
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.spinner{
+  display:flex;
+  justify-content: center;
 }

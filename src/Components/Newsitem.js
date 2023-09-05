@@ -13,7 +13,7 @@ export default class Newsitem extends Component {
                 <p>{description}</p>
             </div>
             <div className="button">
-              <a href={ReadMore}><button>Read More</button></a>
+              <a href={ReadMore}>Read More</a>
             </div>
         </div>
       </div>
