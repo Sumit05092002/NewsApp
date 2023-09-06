@@ -11,18 +11,18 @@ export default class News extends Component {
 
         }
     }
-
+    
     async componentDidMount() {
-        let url = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=20";
-        this.setState({ loading: true })
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
+        this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults ,loading: false})
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
     }
 
     nextFunc = async () => {
         console.log("next clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page + 1}&pageSize=20`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -35,7 +35,7 @@ export default class News extends Component {
 
     prevFunc = async () => {
         console.log("prev clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page - 1}&pageSize=20`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -51,22 +51,21 @@ export default class News extends Component {
                 <div className="heading">
                     <h1>Today's top news headlines</h1>
                 </div>
-
-                    <div className="nextbutton">
-                        <button disabled={this.state.page <= 1} onClick={this.prevFunc}>Previous page</button>
-                        <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / 20)} onClick={this.nextFunc}>Next page</button>
-                    </div>
-                    {this.state.loading && <div className="spinner">
-                        <div className="loader"></div>
-                    </div>}
-                    <br />
+                {this.state.loading && <div className="spinner">
+                    <div className="loader"></div>
+                </div>}
                 <div className="parentcontainer">
+                    <br />
                     {!this.state.loading && this.state.articles.map((element) => {
                         console.log(element)
                         return <div className='newscontent' key={element.url}>
                             <Newsitem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.newsUrl} ReadMore={element.url}></Newsitem>
                         </div>
                     })}
+                <div className="nextbutton">
+                    <button disabled={this.state.page <= 1} onClick={this.prevFunc}>Previous page</button>
+                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults /this.props.pageSize)} onClick={this.nextFunc}>Next page</button>
+                </div>
                 </div>
             </div>
 

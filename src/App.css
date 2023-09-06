@@ -112,6 +112,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  height:800px;
 }
 
 .heading {
@@ -183,4 +184,6 @@ a:hover {
 .spinner{
   display:flex;
   justify-content: center;
+  align-items:center;
+  height:800px;
 }
