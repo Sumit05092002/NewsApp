@@ -13,7 +13,7 @@ export default class News extends Component {
     }
     
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -22,7 +22,7 @@ export default class News extends Component {
 
     nextFunc = async () => {
         console.log("next clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -35,7 +35,7 @@ export default class News extends Component {
 
     prevFunc = async () => {
         console.log("prev clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
         let parsedData = await data.json();

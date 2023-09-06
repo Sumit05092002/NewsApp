@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Newsitem extends Component {
   render() {
-    let{description,imageUrl,newsUrl,title,ReadMore}=this.props;
+    let{description,imageUrl,ReadMore}=this.props;
     return (
       <div>
         <div className="content">
@@ -20,3 +20,4 @@ export default class Newsitem extends Component {
     )
   }
 }
+
