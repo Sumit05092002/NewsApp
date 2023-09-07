@@ -7,7 +7,7 @@ export class Navbar extends Component {
       <div className="navigation">
         <nav>
             <ul>
-                <li>Home</li>
+                <Link to="/home">Home</Link>
                 <li>Contact</li>
                 <li>About</li>
                 <li>Daily News</li>

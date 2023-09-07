@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Newsitem extends Component {
   render() {
-    let{description,imageUrl,ReadMore}=this.props;
+    let{description,imageUrl,ReadMore,author,published}=this.props;
     return (
       <div>
         <div className="content">
@@ -11,6 +11,10 @@ export default class Newsitem extends Component {
             </div>
             <div className="news">
                 <p>{description}</p>
+            </div>
+            <div className="author">
+              <p>Author:{author}</p>
+              <p>Published At:{published}</p>
             </div>
             <div className="button">
               <a href={ReadMore}>Read More</a>

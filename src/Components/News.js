@@ -11,9 +11,17 @@ export default class News extends Component {
 
         }
     }
+
+    async updateNews() {
+        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        this.setState({ loading: true });
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
+    }
     
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -21,29 +29,33 @@ export default class News extends Component {
     }
 
     nextFunc = async () => {
-        console.log("next clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
-        this.setState({ loading: true })
-        let data = await fetch(url);
-        let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles })
-        this.setState({
-            page: this.state.page + 1,
-            loading: false
-        })
+        // console.log("next clicked");
+        // let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+        // this.setState({ loading: true })
+        // let data = await fetch(url);
+        // let parsedData = await data.json();
+        // this.setState({ articles: parsedData.articles })
+        // this.setState({
+        //     page: this.state.page + 1,
+        //     loading: false
+        // })
+        this.setState({page:this.state.page+1})
+        this.updateNews();
     }
 
     prevFunc = async () => {
-        console.log("prev clicked");
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
-        this.setState({ loading: true })
-        let data = await fetch(url);
-        let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles })
-        this.setState({
-            page: this.state.page - 1,
-            loading: false
-        })
+        // console.log("prev clicked");
+        // let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+        // this.setState({ loading: true })
+        // let data = await fetch(url);
+        // let parsedData = await data.json();
+        // this.setState({ articles: parsedData.articles })
+        // this.setState({
+        //     page: this.state.page - 1,
+        //     loading: false
+        // })
+        this.setState({page:this.state.page-1})
+        this.updateNews();
     }
     render() {
         return (
@@ -59,7 +71,7 @@ export default class News extends Component {
                     {!this.state.loading && this.state.articles.map((element) => {
                         console.log(element)
                         return <div className='newscontent' key={element.url}>
-                            <Newsitem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.newsUrl} ReadMore={element.url}></Newsitem>
+                            <Newsitem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.newsUrl} ReadMore={element.url} author={element.author} published={element.publishedAt}></Newsitem>
                         </div>
                     })}
                 <div className="nextbutton">

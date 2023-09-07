@@ -187,3 +187,24 @@ a:hover {
   align-items:center;
   height:800px;
 }
+.grandparentapp{
+  height:500px;
+  display:flex;
+  flex-direction: column;
+
+}
+.headingapp{
+  height:auto;
+  display:flex;
+  justify-content: center;
+}
+.description{
+  height:auto;
+  width:1200px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.content:hover{
+  cursor:pointer;
+}
