@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 import Newsitem from './Newsitem'
 export default class News extends Component {
     articles = []
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             articles: this.articles,
             loading: false,
             page: 1,
 
         }
+        document.title=this.props.category;
     }
 
     async updateNews() {
-        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -21,7 +22,7 @@ export default class News extends Component {
     }
     
     async componentDidMount() {
-        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7e3bb50259e746d38a91b6f8ca79b33f&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -61,7 +62,7 @@ export default class News extends Component {
         return (
             <div className="grandparent">
                 <div className="heading">
-                    <h1>Today's top news headlines</h1>
+                    <h1>Today's top  {this.props.category} headlines</h1>
                 </div>
                 {this.state.loading && <div className="spinner">
                     <div className="loader"></div>

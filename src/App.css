@@ -208,3 +208,10 @@ a:hover {
 .content:hover{
   cursor:pointer;
 }
+.about{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  height:500px;
+  flex-direction: column;
+}

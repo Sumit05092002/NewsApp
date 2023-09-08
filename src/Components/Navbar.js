@@ -8,10 +8,8 @@ export class Navbar extends Component {
         <nav>
             <ul>
                 <Link to="/home">Home</Link>
-                <li>Contact</li>
-                <li>About</li>
-                <li>Daily News</li>
-                <li>Help</li>
+                <Link to="/about">About</Link>
+                <Link to="/usa">US News</Link>
                 <Link to="/">Business</Link>
                 <Link to="/entertainment">Entertainment</Link>
                 <Link to="/general">General</Link>
