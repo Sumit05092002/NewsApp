@@ -7,7 +7,7 @@ export default class News extends Component {
         this.state = {
             articles: this.articles,
             loading: false,
-            page: 1,
+            page: 2,
 
         }
         document.title=this.props.category;
